@@ -1,0 +1,96 @@
+input UserInputs {
+    _id:String
+    userId: String!
+    password:String!
+    userType: String
+    firstName: String
+    lastName: String
+    designation: String
+}
+input UserTypeInputs{
+    role: String
+}
+
+type Invoice{
+    _id:String
+    invoiceId: String
+    items:[Product]
+}
+input InvoiceInputs{
+    _id:String
+    invoiceId: String
+    items:[String]
+}
+
+type User{
+    _id:String
+    userId: String
+    password:String
+    userType: UserType
+    firstName: String
+    lastName: String
+    designation: String
+}
+
+type UserType{
+    _id:String
+    role: String
+}
+
+scalar DateScalar
+
+
+input BarcodeInputs {
+    id: Int!
+    barcode: String!
+}
+
+type Barcode {
+    _id:String!
+    id: Int!
+    barcode: String!
+}
+
+type Product {
+    _id:String!
+    id: Int!
+    name:String!
+    price:Int!
+    barcode: String!
+    dateOfExpiry: DateScalar!
+    quantity: Int!
+}
+
+input ProductInputs {
+    id: Int!
+    name:String!
+    price:Int!
+    barcode: String!
+    dateOfExpiry: DateScalar!
+    quantity: Int!
+}
+
+type Query {
+    BarcodeList : [Barcode!]!
+    userLogin(user:UserInputs!): User
+    userList : [User!]!
+    userTypeList : [UserType!]!
+    productList : [Product!]!
+    getProduct(id: Int): Product!
+    getUser(id: String): User
+    maxIdProduct : Int
+    getInvoice(id: String): Invoice
+    invoiceList : [Invoice!]!
+}
+
+type Mutation {
+    addUser(user: UserInputs!): User!
+    addBarcode(barcode: BarcodeInputs!): Barcode!
+    deleteProduct(id: Int!): String!
+    addProduct(product: ProductInputs!): Product!
+    updateProduct(product: ProductInputs!):String
+    updateUser(user: UserInputs!):String
+    deleteUser(_id: String!): String!
+    addInvoice(invoice: InvoiceInputs!): Invoice!
+    updateInvoice(invoice: InvoiceInputs!): String
+}

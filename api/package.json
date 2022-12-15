@@ -1,0 +1,27 @@
+{
+  "name": "ims",
+  "version": "1.0.0",
+  "description": "Inventory Management System",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -w server -e js,graphql -w . -w .env index.js",
+    "watch": "npx babel --watch src --presets @babel/react --out-dir public --verbose"
+  },
+  "author": "Emy Sharan Aksha",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^2.25.4",
+    "dotenv": "^6.2.0",
+    "express": "^4.18.1",
+    "graphql": "^0.13.2",
+    "mongoose": "^6.4.4",
+    "nodemon": "^2.0.16"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.10",
+    "@babel/preset-react": "^7.16.7"
+  }
+
+}
